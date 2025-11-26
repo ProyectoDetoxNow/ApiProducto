@@ -11,8 +11,8 @@ COPY . .
 RUN chmod +x gradlew
 
 # Construir el proyecto
-RUN ./gradlew clean bootJar -x test
+#RUN ./gradlew build -x test --no-daemon
+RUN ./gradlew bootJar -x test --no-daemon
 
 # Ejecutar cualquier jar que se genere
-CMD ["sh", "-c", "java -jar build\libs\app.jar"]
-
+CMD ["sh", "-c", "java -jar build/libs/app.jar"]
