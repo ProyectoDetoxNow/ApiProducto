@@ -8,10 +8,11 @@ WORKDIR /app
 COPY . .
 
 # Dar permiso de ejecución a gradlew
-RUN chmod +x gradlew
+RUN chmod +x gradlew || true
 
 # Construir el proyecto
-RUN ./gradlew build -x test --no-daemon
+RUN ./gradlew bootJar -x test
 
 # Ejecutar cualquier jar que se genere
-CMD ["sh", "-c", "java -jar build/libs/app.jar"]
+CMD ["java", "-jar", "build/libs/app.jar"]
+
