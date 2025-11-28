@@ -20,8 +20,6 @@ import cl.detoxnow.Inventario.Service.InventarioService;
 @RequestMapping("/Api/v1/inventario")
 public class InventarioController {
 
-    
-
     @Autowired
     private InventarioService inventarioService;
 
