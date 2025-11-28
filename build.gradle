@@ -52,3 +52,6 @@ tasks.withType(JavaCompile) {
 bootJar {
     archiveFileName = 'app.jar'
 }
+jar {
+    enabled = false
+}
