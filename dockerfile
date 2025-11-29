@@ -15,3 +15,4 @@ RUN ./gradlew build -x test --no-daemon
 
 # Ejecutar cualquier jar que se genere
 CMD ["sh", "-c", "java -jar build/libs/app.jar"]
+
