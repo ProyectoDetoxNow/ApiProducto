@@ -37,9 +37,12 @@ public Inventario updateInventario(int id, Inventario inventario) {
 
     // Aquí actualizas los campos necesarios
     existing.setNombreProducto(inventario.getNombreProducto());
+    existing.setDescripcion(inventario.getDescripcion());
+    existing.setCategoria(inventario.getCategoria());
     existing.setPrecio(inventario.getPrecio());
     existing.setCantidad(inventario.getCantidad());
-
+    existing.setImagen(inventario.getImagen());
+    
     return inventarioRepository.save(existing);
 }
 
