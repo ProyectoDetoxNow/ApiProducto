@@ -50,9 +50,24 @@ public Inventario updateInventario(int id, Inventario inventario) {
         inventarioRepository.deleteById(id);
         return "El producto con id " + id + " ha sido eliminado";
     }
-
-
-
-
+    
+        @Transactional
+    public Inventario descontarStock(int id, int cantidad) {
+    
+        Inventario producto = inventarioRepository.findById(id)
+                .orElseThrow(() -> new ResponseStatusException(
+                        HttpStatus.NOT_FOUND, "Producto no encontrado con ID " + id));
+                
+        if (producto.getCantidad() < cantidad) {
+            throw new ResponseStatusException(
+                    HttpStatus.BAD_REQUEST,
+                    "Stock insuficiente para el producto " + producto.getNombreProducto()
+            );
+        }
+    
+        producto.setCantidad(producto.getCantidad() - cantidad);
+    
+        return inventarioRepository.save(producto);
+    }
 
 }

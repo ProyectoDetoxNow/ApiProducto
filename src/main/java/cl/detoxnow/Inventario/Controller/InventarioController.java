@@ -42,10 +42,16 @@ public class InventarioController {
         return inventarioService.updateInventario(id, inventario);
     }
 
+    @PutMapping("/descontar/{id}/{cantidad}")
+    public Inventario descontarStock(
+        @PathVariable int id,
+        @PathVariable int cantidad) {
+        return inventarioService.descontarStock(id, cantidad);
+    }
+
     @DeleteMapping("/{id}")
     public String deleteInventario(@PathVariable("id") int id) {
         return inventarioService.deleteInventario(id);
     }
-
 
 }
